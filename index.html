@@ -12,15 +12,42 @@
             background-color: #f0f0f0;
             border-radius: 20px;
         }
+        .btn{
+            background-color: aqua;
+            margin:  0px;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width:100% ;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .btn2{
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: 60px;
+            border: none;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>Students</h1>
-    <input type="text" id="student-name" placeholder="Enter your name">
-    <button type="button" id="Add-Student" onclick="AddStudent()">Add Student</button>
-    <button type="button" onclick="LoadStudent()">Load Students</button>
-    <div id="studentContainer"></div>
+   
+    <h1>StudentsBook 📘</h1>
+    <div class=" btn">
+    <input type="text" id="student-name" class="input" placeholder="Enter your name">
 
+    <button type="button  btn2" id="Add-Student" onclick="AddStudent()">Add Student</button>
+
+    <button type="button btn2" onclick="AddStudent()">Remove Student</button>
+
+    <button type="button btn2" onclick="LoadStudent()">Load Students</button>
+    <div id="studentContainer"></div>
+</div>
     <script>
 function randomemoji(){
     const emojis = ['😊','🙂','😃','😄','🤗'];
@@ -37,7 +64,7 @@ function randomemoji(){
             studentContainer.innerHTML = ""; // Clear previous entries
 
             students.forEach((student, index) => {
-                studentContainer.innerHTML += `<div class='student-card'>😊${index + 1}) ${student}</div>`;
+                studentContainer.innerHTML += `<div class='student-card'>${randomemoji()} ${index + 1}) ${student}</div>`;
             });
         }
 
