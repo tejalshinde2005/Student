@@ -12,19 +12,18 @@
             background-color: #f0f0f0;
             border-radius: 20px;
         }
-        .btn{
+        .btn {
             background-color: aqua;
-            margin:  0px;
-            padding: 10px;
+            margin: 0px;
+            padding: 20px;
             position: fixed;
             bottom: 0;
-            width:100% ;
+            width: 100%;
             display: flex;
             justify-content: center;
-
         }
 
-        .btn2{
+        .btn2 {
             padding: 5px 10px;
             border-radius: 20px;
             width: 60px;
@@ -33,29 +32,33 @@
             margin-right: 10px;
             cursor: pointer;
         }
+
+        .input {
+            border-radius: 10px;
+            border: none;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     </style>
 </head>
 <body>
-   
     <h1>StudentsBook 📘</h1>
-    <div class=" btn">
-    <input type="text" id="student-name" class="input" placeholder="Enter your name">
-
-    <button type="button  btn2" id="Add-Student" onclick="AddStudent()">Add Student</button>
-
-    <button type="button btn2" onclick="AddStudent()">Remove Student</button>
-
-    <button type="button btn2" onclick="LoadStudent()">Load Students</button>
+    <div class="btn">
+        <input type="text" id="student-name" class="input" placeholder="Enter your name">
+        <button type="button" class="btn2" id="Add-Student" onclick="AddStudent()">Add</button>
+        <button type="button" class="btn2" onclick="RemoveStudent()">Remove</button>
+        <button type="button" class="btn2" onclick="LoadStudent()">Load</button>
+    </div>
     <div id="studentContainer"></div>
-</div>
+
     <script>
-function randomemoji(){
-    const emojis = ['😊','🙂','😃','😄','🤗'];
-    const min = 0;
-    const max = emojis.length-1;
-    const randomIndex = Math.floor(Math.random() * (max - min+ 1)) + min ;
-    return emojis[randomIndex]
-}
+        function randomemoji() {
+            const emojis = ['😊', '🙂', '😃', '😄', '🤗'];
+            const min = 0;
+            const max = emojis.length - 1;
+            const randomIndex = Math.floor(Math.random() * (max - min + 1)) + min;
+            return emojis[randomIndex];
+        }
 
         let students = ["Tejal", "Shravani", "Akangsha", "Abhi", "Nitin", "Nidhi", "Gauri"];
 
@@ -78,6 +81,20 @@ function randomemoji(){
                 LoadStudent(); // Reload student list to include the new student
             } else {
                 alert("Please enter a valid student name.");
+            }
+        }
+
+        function RemoveStudent() {
+            const studentInput = document.getElementById("student-name");
+            const studentName = studentInput.value.trim();
+            const studentIndex = students.indexOf(studentName);
+
+            if (studentIndex !== -1) {
+                students.splice(studentIndex, 1);
+                studentInput.value = ""; // Clear input field
+                LoadStudent(); // Reload student list after removal
+            } else {
+                alert("Student not found.");
             }
         }
     </script>
