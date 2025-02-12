@@ -15,33 +15,36 @@
     </style>
 </head>
 <body>
-<h1> Students</h1>
-<input type="text" id="student-name" placeholder="Enter your name">
-<button typr="button" id="Add-Student" onclick="AddStudent()">Add Students</button>
-<button typr="button"  onclick="LoadStudent()">Load-Student</button>
-    <div id="studentContainer"></div> <!-- Added missing div -->
+    <h1>Students</h1>
+    <input type="text" id="student-name" placeholder="Enter your name">
+    <button type="button" id="Add-Student" onclick="AddStudent()">Add Student</button>
+    <button type="button" onclick="LoadStudent()">Load Students</button>
+    <div id="studentContainer"></div>
 
     <script>
-            function LoadStudent(){
-        const students = ["Tejal", "Shravani", "Akangsha", "Abhi", "Nitin","Nidhi","Gauri"];
-        const studentContainer = document.getElementById("studentContainer");
+        let students = ["Tejal", "Shravani", "Akangsha", "Abhi", "Nitin", "Nidhi", "Gauri"];
 
-        studentContainer.innerHTML =" "
+        function LoadStudent() {
+            const studentContainer = document.getElementById("studentContainer");
+            studentContainer.innerHTML = ""; // Clear previous entries
 
-        if (studentContainer) {
             students.forEach((student, index) => {
                 studentContainer.innerHTML += `<div class='student-card'>${index + 1}) ${student}</div>`;
             });
         }
-    }
-    function AddStudent(){
-     const studentInput = document.getElementById("student-name")
-     students.push(studentInput.value)
-    }
 
+        function AddStudent() {
+            const studentInput = document.getElementById("student-name");
+            const newStudent = studentInput.value.trim();
 
-    
+            if (newStudent) {
+                students.push(newStudent);
+                studentInput.value = ""; // Clear input field
+                LoadStudent(); // Reload student list to include the new student
+            } else {
+                alert("Please enter a valid student name.");
+            }
+        }
     </script>
-
 </body>
 </html>
